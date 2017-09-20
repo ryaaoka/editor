@@ -19,42 +19,13 @@ var server = new http.Server(function(req, res){
         parseArticle(parsedUrl, res);
     }
     else if(pathname === '/sendChanges' && req.method === 'POST'){
-        let body = '';
-        req.on('readable', function(){
-            let piece = req.read();
-            if(!piece){
-                return;
-            }
-            body += piece;
-        });
-        req.on('end', function(){
-            try{
-                database.addEdit(body, res);
-            }catch(e) {
-                res.end('Invalid data');
-            }
-        });
+        readData(req, res, database, 'addEdit');
     }
     else if(pathname === '/result'){
             database.findEdits(res);
     }
     else if(pathname === '/update' && req.method === 'POST'){
-        let body = '';
-        req.on('readable', function(){
-            let piece = req.read();
-            if(!piece){
-                return;
-            }
-            body += piece;
-        });
-        req.on('end', function(){
-            try{
-                database.updateEdit(body, res);
-            }catch(e){
-                res.statusCode('403');
-                res.end('Invalid data');
-            }
-        });
+        readData(req, res, database, 'updateEdit');
     }
     else{
         sendFileSafe(pathname, res, ROOT)
@@ -85,5 +56,21 @@ function parseArticle(parsedUrl, res){
     }
 }
 
-
-
+function readData(req, res, obj, action) {
+    let body = '';
+    req.on('readable', function () {
+        let piece = req.read();
+        if (!piece) {
+            return;
+        }
+        body += piece;
+    });
+    req.on('end', function () {
+        try {
+            obj[action](body, res);
+        } catch (e) {
+            res.statusCode('403');
+            res.end('Invalid data');
+        }
+    });
+}

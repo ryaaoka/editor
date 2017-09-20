@@ -7,6 +7,11 @@ var url = 'mongodb://localhost:27017/bezvozyuk_project';
 
 exports.findEdits = function(res) {
     MongoClient.connect(url, function (err, db) {
+        if (err){
+            res.statusCode = 500;
+            res.end('Can not connect to the database');
+            return;
+        }
         assert.equal(null, err);
         console.log("Connected correctly to server");
 
@@ -36,6 +41,11 @@ exports.addEdit= function(data, res){
         }
 
         MongoClient.connect(url, function (err, db) {
+            if (err){
+                res.statusCode = 500;
+                res.end('Can not connect to the database');
+                return;
+            }
             assert.equal(null, err);
             console.log("Connected correctly to server");
 
@@ -78,6 +88,11 @@ exports.updateEdit = function(data, res){
     var id = ObjectId(data.id);
 
     MongoClient.connect(url, function (err, db) {
+        if (err){
+            res.statusCode = 500;
+            res.end('Can not connect to the database');
+            return;
+        }
         assert.equal(null, err);
         console.log("Connected correctly to server");
 

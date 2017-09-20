@@ -27097,7 +27097,11 @@ var Editor = _react2.default.createClass({
 			body: JSON.stringify(json)
 		}).then(function (res) {
 			console.log(res);
-			alert('Edit has been sent');
+			if (res.status == 200) {
+				alert('Edit has been sent');
+			} else if (res.status == 500) {
+				alert('Error! Edit is not sent. Please, check the db connection');
+			}
 		}).catch(function (res) {
 			console.log(res);
 		});
