@@ -1,0 +1,133 @@
+body{
+
+}
+
+body{
+	font-family: 'Roboto', sans-serif;
+}
+
+.box{
+	margin-left: auto;
+	margin-right: auto;
+	width: 40%;
+	min-width: 300px;
+	border: 2px solid #f2f3f3;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+.box .edit-form{
+	position: relative;
+	border-left: 2px solid #f2f3f3;
+	border-right: 2px solid #f2f3f3;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5%;
+	margin-bottom: 10%;
+}
+
+.edit-form *{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.edit-form textarea{
+	margin-left: 0;
+	width: 100%;
+	min-height: 50px;
+	font-family: 'Roboto', sans-serif;
+	max-width: 100%;
+	min-width: 100%;
+	border-radius: 5px;
+	border-color:#e1e8f9;
+	box-sizing: border-box;
+}
+
+.edit-form textarea:focus{
+	outline: none;
+	border: 2px solid #d2d9eb;
+}
+.edit-form .title{
+	text-transform: uppercase;
+	color:#c0c7cd;
+}
+
+.edit-form p{
+	margin-top:0;
+}
+
+.edit-form form{
+	position: relative;
+}
+
+button.send{
+	position: absolute;
+	right: 0;
+	bottom:0;
+	margin-bottom: -8%;
+	margin-right: 0;
+	border: none;
+	background-color: transparent;
+	color:#c0c7cd;
+	cursor: pointer;
+	padding: 0;
+}
+
+button.send:focus{
+	outline: none;
+}
+
+button.send::before{
+	position: absolute;
+	content: '';
+	height: 25px;
+	width: 25px;
+	left: 0;
+	top:0;
+	transform: translateX(-110%) translateY(-25%);
+	background: url(../images/success.svg) no-repeat center;
+	background-size: 100%;
+}
+
+button.delete, button.approve{
+	position: absolute;
+	right: 0;
+	bottom:0;
+	margin-bottom: -6%;
+	margin-right: 10px;
+	border: none;
+	background-color: transparent;
+	color:#c0c7cd;
+	cursor: pointer;
+	padding: 0;
+	font-weight: 600;
+	font-size: 10px;
+}
+button.delete{
+	transform: translateX(-200%);
+	color: #da4ec8;
+	margin-right: 20px;
+}
+button.approve{
+	color:#d2d9eb;
+}
+
+button.delete::before, button.approve::before{
+	position: absolute;
+	content: '';
+	height: 25px;
+	width: 25px;
+	left: 0;
+	top:0;
+	transform: translateX(-110%) translateY(-25%);
+}
+
+button.delete::before{
+	background: url(../images/cancel.svg) no-repeat center;
+	background-size: 100%;
+}
+button.approve::before{
+	background: url(../images/success.svg) no-repeat center;
+	background-size: 100%;
+}
